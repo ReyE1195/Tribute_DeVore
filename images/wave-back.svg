@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <!-- Back wave: ombre from medium blue down to soft sky blue -->
+    <defs>
+        <linearGradient id="backFade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2E5A88"/>
+            <stop offset="1" stop-color="#9CC3E0"/>
+        </linearGradient>
+    </defs>
+    <path fill="url(#backFade)" d="M0,0 L0,78 C180,108 540,48 720,78 C900,108 1260,48 1440,78 L1440,0 Z"/>
+</svg>

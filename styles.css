@@ -1,0 +1,665 @@
+/* Color & Font Palette */
+:root {
+    --cream: #FAF6EE;        /* page background */
+    --paper: #FFFDF8;        /* cards, slightly lighter than the page */
+    --navy: #1F3A5F;         /* headings, footer */
+    --blue: #2E5A88;         /* deep wave, accents */
+    --skyBlue: #9CC3E0;      /* light wave, soft borders */
+    --gold: #C9A227;         /* thin lines, small details */
+    --ink: #2B2B2B;          /* body text */
+
+    /* Grandma's favorite colors */
+    --emerald: #1E8C5A;
+    --forestGreen: #1B5E3B;
+    --springGreen: #7ED36A;
+    --stormyTeal: #076769;
+    --teal: #1F8A8A;
+    --red: #C0392B;
+
+    --accent: var(--emerald);   /* carousel arrows */
+    --galleryDark: rgb(12 22 38 / 0.92);   /* dialog background */
+    --waveTile: 1440px;         /* width of one wave repeat */
+
+    --headingFont: "Playfair Display", Georgia, serif;
+    --bodyFont: "Lora", Georgia, serif;
+}
+
+/* Base */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--bodyFont), sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--headingFont), sans-serif;
+    color: var(--navy);
+    line-height: 1.25;
+}
+
+/* Intro (hero): text left, photo right */
+.heroIntro {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+    position: relative;
+    z-index: 0;
+}
+
+.heroIntro::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.title {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+}
+
+.titleLead {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: var(--bodyFont), serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.heroText p {
+    max-width: 55ch;
+    font-size: 1.15rem;
+}
+
+#introImg {
+    float: right;
+    width: min(45%, 520px);
+    margin: 0 0 0 3rem;
+    padding: 0 0 2rem 2rem;
+    background: var(--cream);
+    position: relative;
+    border-bottom-left-radius: 12px;
+}
+
+#introImg::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at bottom left, transparent 12px, var(--cream) 12.5px);
+}
+
+.headerImg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    box-shadow: 0 12px 32px rgb(31 58 95 / 0.18);
+}
+
+#lifeWork {
+    max-width: none;
+    margin: 2.5rem 0 0;
+    padding: 0;
+}
+
+#lifeWork p {
+    position: relative;
+    z-index: -1;
+}
+
+#lifeWork p::before,
+#lifeWork p::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    right: min(45%, 520px);
+    width: 12px;
+    height: 16px;
+}
+
+#lifeWork p::before {
+    background: var(--cream);
+}
+
+#lifeWork p::after {
+    background: var(--paper);
+    border-top: 4px solid var(--gold);
+    border-top-right-radius: 12px;
+}
+
+/* Section 1: ten words */
+#tenWords {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+#tenWords h2 {
+    font-size: 2rem;
+}
+
+.wordList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wordList li {
+    padding: 0.5rem 1.2rem;
+    border: 2px solid var(--skyBlue);
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--navy);
+    font-family: var(--headingFont);
+    font-style: italic;
+    animation: pillColors 18s linear infinite;
+}
+
+/* Cycle the tag borders through Grandma's colors */
+.wordList li:nth-child(5n + 1) {
+    border-color: var(--emerald);
+}
+
+.wordList li:nth-child(5n + 2) {
+    border-color: var(--teal);
+}
+
+.wordList li:nth-child(5n + 3) {
+    border-color: var(--blue);
+}
+
+.wordList li:nth-child(5n + 4) {
+    border-color: var(--forestGreen);
+}
+
+.wordList li:nth-child(5n + 5) {
+    border-color: var(--springGreen);
+}
+
+@keyframes pillColors {
+    0%, 100% { border-color: var(--emerald); }
+    20%      { border-color: var(--teal); }
+    40%      { border-color: var(--blue); }
+    60%      { border-color: var(--forestGreen); }
+    80%      { border-color: var(--springGreen); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wordList li {
+        animation: none;
+    }
+}
+
+/* Scripture quotes with wave borders */
+.scriptureQuote {
+    position: relative;
+    padding: 8rem 1.5rem;
+    text-align: center;
+}
+
+.scriptureQuote::before,
+.scriptureQuote::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background-image:
+            url("images/wave-front.svg"),
+            url("images/wave-back.svg");
+    background-repeat: repeat-x;
+    background-size: var(--waveTile) 100%;
+    animation: waveFlow 60s linear infinite;
+}
+
+.scriptureQuote::before {
+    top: 0;
+}
+
+.scriptureQuote::after {
+    bottom: 0;
+    transform: scaleY(-1);
+}
+
+/* Each layer slides a whole number of tiles, so the loop is seamless.
+   Different speeds and directions make the layers twist past each other. */
+@keyframes waveFlow {
+    from {
+        background-position: 0 0, 0 0;
+    }
+    to {
+        background-position:
+                calc(var(--waveTile) * -1) 0,
+                var(--waveTile) 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scriptureQuote::before,
+    .scriptureQuote::after {
+        animation: none;
+    }
+}
+
+.scriptureQuote h3 {
+    margin: 0 0 1rem;
+    font-family: var(--bodyFont);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.scripture {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: var(--headingFont);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-style: italic;
+    color: var(--navy);
+}
+
+.scripture p {
+    margin: 0 0 0.5rem;
+}
+
+.scripture cite {
+    display: inline-block;
+    font-family: var(--bodyFont);
+    font-size: 1rem;
+    font-style: normal;
+    color: var(--blue);
+}
+
+.quoteNote {
+    font-size: 0.7em;
+}
+
+/* Sections 2–4: paragraph cards */
+.questions {
+    max-width: 850px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+}
+
+.questions h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    text-align: center;
+}
+
+.questions p {
+    padding: 2.5rem 3rem;
+    border-top: 4px solid var(--gold);
+    border-radius: 12px;
+    background: var(--paper);
+    box-shadow: 0 4px 16px rgb(31 58 95 / 0.08);
+    text-align: justify;
+    hyphens: auto;
+    line-height: 1.85;
+}
+
+/* Large decorative first letter */
+.questions p::first-letter {
+    float: left;
+    padding: 0.35rem 0.6rem 0 0;
+    font-family: var(--headingFont);
+    font-size: 3.8em;
+    line-height: 0.8;
+    color: var(--blue);
+}
+
+/* A different favorite color for each story's first letter */
+#lifeWork p::first-letter {
+    color: var(--forestGreen);
+}
+
+#stories p::first-letter   {
+    color: var(--teal);
+}
+
+#influence p::first-letter {
+    color: var(--stormyTeal);
+}
+
+#lessons p::first-letter   {
+    color: var(--red);
+}
+
+/* Gallery heading */
+#gallery {
+    margin: 5rem 0 0;
+}
+
+#gallery h2 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    --veilWidth: 28%;
+}
+
+.marquee {
+    overflow: clip;
+}
+
+.marqueeTrack {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+}
+
+.marqueeTrack img {
+    height: 220px;
+    width: auto;
+    margin-right: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.carousel::before,
+.carousel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    width: var(--veilWidth);
+    background: rgb(250 246 238 / 0.55);
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+}
+
+.carousel::before { left: 0; }
+.carousel::after  { right: 0; }
+
+.carouselBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 8px;
+    background: rgb(250 246 238 / 0.85);
+    color: var(--accent);
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.carouselBtn:hover,
+.carouselBtn:focus-visible {
+    background: rgb(250 246 238 / 1);
+}
+
+.prevBtn { left: calc(var(--veilWidth) - 4rem); }
+.nextBtn { right: calc(var(--veilWidth) - 4rem); }
+
+/* Gallery dialog */
+#galleryModal {
+    width: min(92vw, 1100px);
+    max-height: 90vh;
+    padding: 2.5rem 1.5rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    background: var(--galleryDark);
+    color: var(--cream);
+}
+
+#galleryModal::backdrop {
+    background: rgb(0 0 0 / 0.6);
+    backdrop-filter: blur(3px);
+}
+
+#galleryModal[open] {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.modalClose {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.75rem;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 2px solid var(--springGreen);
+    border-radius: 50%;
+    background: rgb(255 255 255 / 0.08);
+    color: var(--springGreen);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.modalClose:hover,
+.modalClose:focus-visible {
+    background: var(--red);
+    border-color: var(--red);
+    color: #FFFFFF;
+    transform: rotate(90deg);
+}
+
+.modalFeature {
+    position: relative;
+    margin: 0;
+}
+
+.modalFeature img {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+}
+
+.featureBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 8px;
+    background: rgb(255 255 255 / 0.15);
+    color: #FFFFFF;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.featureBtn:hover,
+.featureBtn:focus-visible {
+    background: rgb(255 255 255 / 0.3);
+}
+
+.featurePrev { left: 0.75rem; }
+.featureNext { right: 0.75rem; }
+
+.modalGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    max-height: 40vh;
+    overflow-y: auto;
+    scrollbar-color: var(--skyBlue) transparent;
+}
+
+.gridThumb {
+    padding: 0;
+    border: 3px solid transparent;
+    border-radius: 6px;
+    background: none;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.gridThumb:hover,
+.gridThumb:focus-visible,
+.gridThumb.isActive {
+    opacity: 1;
+}
+
+.gridThumb img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.gridThumb.isActive {
+    border-color: var(--springGreen);
+}
+
+/* Footer: navy band with a thin gold edge */
+.siteFooter {
+    margin-top: 5rem;
+    padding: 3.5rem 1.5rem 2rem;
+    border-top: 4px solid var(--gold);
+    background: var(--navy);
+    color: var(--cream);
+}
+
+.verseNotes {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.verseNotes h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    text-align: center;
+    color: var(--cream);
+}
+
+.verseNotes > p {
+    text-align: center;
+    font-style: italic;
+}
+
+.verseNotes li {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.verseNotes cite {
+    color: var(--gold);
+}
+
+.credits {
+    max-width: 800px;
+    margin: 2.5rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gold);
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.credits p {
+    margin: 0.25rem 0;
+}
+
+.madeWithLove {
+    font-family: var(--headingFont);
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+    .heroIntro {
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    #introImg {
+        float: none;
+        width: 100%;
+        margin: 0;
+        padding: 0 0 2rem;
+    }
+
+    #introImg::after,
+    #lifeWork p::before,
+    #lifeWork p::after {
+        display: none;
+    }
+
+    .heroText p {
+        margin-inline: auto;
+    }
+
+    .questions p {
+        padding: 1.75rem 1.5rem;
+        text-align: left;
+    }
+
+    .scriptureQuote {
+        padding: 6rem 1.25rem;
+    }
+
+    .scriptureQuote::before,
+    .scriptureQuote::after {
+        height: 60px;
+    }
+
+    .scriptureQuote {
+        --waveTile: 720px;
+    }
+
+    .marqueeTrack img {
+        height: 160px;
+    }
+
+    .carousel {
+        --veilWidth: 15%;
+    }
+
+    .prevBtn { left: 0.5rem; }
+    .nextBtn { right: 0.5rem; }
+}
+
+@media (min-width: 768px) {
+    #galleryModal[open] {
+        grid-template-columns: 2fr 1fr;
+        align-items: start;
+    }
+
+    .modalFeature img {
+        max-height: 80vh;
+    }
+
+    .modalGrid {
+        max-height: 80vh;
+    }
+}

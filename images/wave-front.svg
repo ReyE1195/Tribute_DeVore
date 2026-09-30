@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <defs>
+        <!-- Front wave: ombre from deep navy down to a brighter blue -->
+        <linearGradient id="frontFade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1F3A5F"/>
+            <stop offset="1" stop-color="#3F7CB5"/>
+        </linearGradient>
+        <!-- Gold shimmer (light-dark-light so the tiles join seamlessly) -->
+        <linearGradient id="goldShimmer" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#E6C866"/>
+            <stop offset="0.5" stop-color="#B8911E"/>
+            <stop offset="1" stop-color="#E6C866"/>
+        </linearGradient>
+    </defs>
+    <path fill="url(#frontFade)" d="M0,0 L0,40 C180,66 540,14 720,40 C900,66 1260,14 1440,40 L1440,0 Z"/>
+    <!-- Gold line traces the edge where the two blues meet, so it moves with the wave -->
+    <path fill="none" stroke="url(#goldShimmer)" stroke-width="3" vector-effect="non-scaling-stroke"
+          d="M0,40 C180,66 540,14 720,40 C900,66 1260,14 1440,40"/>
+</svg>
